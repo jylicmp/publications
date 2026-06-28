@@ -1,0 +1,554 @@
+%
+%Academic CV LaTeX Template
+% Author: Dubasi Pavan Kumar
+% LinkedIn: https://www.linkedin.com/in/im-pavankumar/
+% License: MIT
+%
+% For errors, suggestions, or improvements, please contact:
+% Email: pavankumard.pg19.ma@nitp.ac.in
+%
+
+
+
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\setlength{\footskip}{5pt} % Addressing fancyhdr warning
+
+% Hyperlink setup (moved after fancyhdr to address warning)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Custom box settings
+\usepackage[most]{tcolorbox}
+\tcbset{
+    frame code={},
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!20,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    enlarge left by=-2mm,
+    boxsep=4pt,
+    arc=0pt,outer arc=0pt,
+}
+
+% URL style
+\urlstyle{same}
+
+% Text alignment
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
+
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+
+% Commands for icon sizing and positioning
+\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
+\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
+
+% Font options
+\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
+\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
+\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
+\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
+\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
+\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
+\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
+\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
+\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
+\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
+
+\begin{document}
+\headerfontiii
+
+% Header
+\begin{center}
+    {\Huge\textbf{JIAYU LI}}
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    +852-5531-1950 | \href{mailto:jyli93@hku.hk}{jyli93@hku.hk}
+    }
+\end{center}
+\vspace{-6mm}
+
+\begin{center}
+    \small{
+    \socialicon{\faLinkedin} \href{https://www.linkedin.com/in/jiayu-li-945537320/}{Linkedin} | 
+    \socialicon{\faGithub} \href{https://github.com/jylicmp}{Github} | 
+    \socialicon{\faGoogle} \href{https://scholar.google.com/citations?user=XHvrW1sAAAAJ&hl=en}{Google scholar}
+    % | \ieeeicon{\includegraphics[height=1.3em]{ieee_collabratec_icon.png}} \href{https://ieee-collabratec.ieee.org/app/p/your-profile}{your-profile} |
+    % \socialicon{\faTwitter} \href{https://twitter.com/your-handle}{your-handle}
+    }
+\end{center}
+\vspace{-6mm}
+\begin{center}
+    \small{Pokfulam Road, The University of Hong Kong, Hong Kong SAR}
+\end{center}
+
+\vspace{-2mm}
+
+% \section{\textbf{Objective}}
+% \vspace{1mm}
+% \small{
+% Seeking a challenging position in [your field] to leverage my expertise in [your key skills]. Aiming to contribute to innovative projects at the intersection of [your interests] and practical problem-solving in fields such as [specific areas of interest].
+% }
+% \vspace{-2mm}
+
+
+
+\section{\textbf{Experience}}
+\vspace{-0.4mm}
+  \resumeSubHeadingListStart
+  \resumeSubheading
+      {{The University of Hong Kong}}{Hong Kong SAR, China}
+      {Postdoctoral Fellow}{Jul. 2024 to present}
+      % \resumeItemListStart
+      %   \item Developed [specific achievement] achieving [specific metric] in [specific area]
+      %   \item Implemented [technology/method], enhancing [specific aspect] by [specific percentage]
+      %   \item Conducted analysis on [specific data], identifying [key findings]
+      %   \item Presented findings at [specific event], receiving [specific recognition]
+      % \resumeItemListEnd 
+  \resumeSubheading
+    {The University of Hong Kong}{Hong Kong SAR, China}
+    {Research Assistant}{May 2024 -- Jun. 2024}
+  \resumeSubheading
+    {Southern University of Science and Technology}{Shenzhen, Guangdong, China}
+    {Research Assistant}{Jul. 31, 2019 -- Jul. 2020}
+  \resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Education}}
+\vspace{-0.4mm}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Southern University of Science and Technology}{Shenzhen, Guangdong, China}
+{Ph.D. in Condensed Matter Physics}{Sep. 2020 -- Jun. 2024}
+% \resumeItemListStart
+% \item GPA: X.XX/4.00
+% \resumeItemListEnd
+
+\resumeSubheading
+{South China Normal University}{Guangzhou, Guangdong, China}
+{M.S. in Condensed Matter Physics}{Sep. 2016 -- Jun. 2019}
+
+\resumeSubheading
+{Changsha University of Science and Technology}{Changsha, Hunan, China}
+{B.S. in Physics}{Sep. 2012 -- Jun. 2016}
+% \resumeItemListStart
+% \item Grade: XX.X\%
+% \resumeItemListEnd
+
+% \resumeSubheading
+% {Changsha University of Science and Technology}{Changsha, Hunan, China}
+% {B.S. in Physics}{Sep. 2012 -- Jun. 2016}
+% \resumeItemListStart
+% \item GPA: X.X/10
+% \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+\section{\textbf{Research Interests}}
+\vspace{0.4mm}
+\textbf{Theoretical and computational condensed matter physics:} 
+\resumeItemListStart
+\item New directions from classic group theory in condensed matter such as spin group and quasisymmetry
+\item Novel topological states induced by magnetism and spin-orbit coupling
+\item New geometric effects in electric, spin, and pseudospin transports
+\resumeItemListEnd
+\vspace{-3mm}
+
+\section{\textbf{Honors and Awards}}
+\vspace{0.4mm}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Outstanding Doctoral Dissertation}{Shenzhen, Guangdong, China}
+{Southern University of Science and Technology}{Jun. 2024}
+\resumeSubheading
+{National Scholarship for Graduate Excellence}{Shenzhen, Guangdong, China}
+{Southern University of Science and Technology}{Oct. 2021}
+\resumeSubHeadingListEnd
+\vspace{-6mm}
+
+
+\section{\textbf{Selected Publications} \hfill \textcolor{darkblue}{\scriptsize $\dagger$ Co-first author, * Corresponding author}}
+\vspace{0.5mm}
+
+\begin{enumerate}[leftmargin=*]
+
+    \item \underline{J. Li}, F-R Fan, W. Yao*, Quasisymmetry Enriched Gapless Criticality at Chern Insulator Transitions, \href{https://arxiv.org/abs/2601.15011}{\textit{arXiv}: 2601.15011 (2026)}
+
+    \item H. Zhu$^{\dagger}$, \underline{J. Li$^{\dagger}$}, X. Chen, Y. Yu, Q. Liu*, Magnetic geometry induced quantum geometry and nonlinear transports, \href{https://www.nature.com/articles/s41467-025-60128-2}{\textit{Nat. Commun.} \textbf{16}, 4882 (2025)}
+
+    \item X. Chen, Y. Liu, P. Liu, Y. Yu, J. Ren, \underline{J. Li}, A. Zhang, Q. Liu*, Unconventional magnons in collinear magnets dictated by spin space groups, \href{https://www.nature.com/articles/s41586-025-08715-7}{\textit{Nature} \textbf{640}, 349 (2025)}
+
+    \item A. Zhang$^{\dagger}$, X. Chen$^{\dagger}$, \underline{J. Li}, P. Liu, Y. Liu, Q Liu*, Topological charge quadrupole protected by spin-orbit U(1) quasi-symmetry in antiferromagnet NdBiPt, \href{https://www.cell.com/newton/fulltext/S2950-6360(25)00002-7}{\textit{Newton} \textbf{1}, 2 (2025)}
+
+    \item L. Liu$^{\dagger}$, Y. Liu$^{\dagger}$, \underline{J. Li}, H. Wu, Q. Liu, Quantum spin Hall effect protected by spin U(1) quasisymmetry, \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.L161104}{\textit{Phys. Rev. B} \textbf{110}, L161104 (2025)}
+
+    \item \underline{J. Li}, A. Zhang, Y. Liu, and Q. Liu*, Group Theory on Quasisymmetry and Protected Near Degeneracy, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.026402}{\textit{Phys. Rev. Lett.} \textbf{13}, 025402 (2024)} 
+
+    \item Y Liu, \underline{J. Li}, Q Liu*, Chern-insulator phase in antiferromagnets, \href{https://pubs.acs.org/doi/abs/10.1021/acs.nanolett.3c02489}{\textit{Nano Lett.} \textbf{23}, 8650 (2023)}
+
+    \item \underline{J. Li$^{\dagger}$}, Q. Yao$^{\dagger}$, L. Wu$^{\dagger}$, Z. Hu, B. Gao, X. Wan*, Q. Liu*, Designing light-element materials with large effective spin-orbit coupling, \href{https://www.nature.com/articles/s41467-022-28534-y}{\textit{Nat. Commun.} \textbf{13}, 919 (2022)}
+
+    \item Y. Wan$^{\dagger}$, \underline{J. Li$^{\dagger}$}, Q. Liu*, Topological magnetoelectric response in ferromagnetic axion insulators, \href{https://academic.oup.com/nsr/advance-article/doi/10.1093/nsr/nwac138/6648715}{\textit{Natl. Sci. Rev.} nwac138 (2022)} 
+
+    \item W. Chen, M. Gu, \underline{J. Li}, P. Wang, Q. Liu*, Role of hidden spin polarization in nonreciprocal transport of antiferromagnets, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.129.276601}{\textit{Phys. Rev. Lett.} \textbf{129}, 276601 (2022)}
+
+    \item P. Liu, \underline{J. Li}, J. Han, X. Wan*, Q. Liu*, Spin-group symmetry in magnetic materials with negligible spin-orbit coupling, \href{https://journals.aps.org/prx/abstract/10.1103/PhysRevX.12.021016}{\textit{Phys. Rev. X} \textbf{12}, 021016 (2022)}
+
+    \item M. Gu$^{\dagger}$, \underline{J. Li$^{\dagger}$}, H. Sun, Y. Zhao, C. Liu, J. Liu*, H. Lu, Q. Liu*, Spectral signatures of the surface anomalous Hall effect in magnetic axion insulators, \href{https://www.nature.com/articles/s41467-021-23844-z}{\textit{Nat. Commun.} \textbf{12}, 3524 (2021)}  
+
+    \item X. Wu$^{\dagger}$, \underline{J. Li$^{\dagger}$}, X. Ma$^{\dagger}$, Y. Zhang$^{\dagger}$, Y. Liu, C. Zhou, J. Shao, Q. Wang, Y. Hao, Y. Feng, E. F. Schwier, S. Kumar, H. Sun, P. Liu, K. Shimada, K. Miyamoto, T. Okuda, K. Wang, M. Xie, C. Chen, Q. Liu*, C. Liu*, Y. Zhao*, Distinct topological surface states on the two terminations of MnBi$_{4}$Te$_{7}$, \href{https://journals.aps.org/prx/abstract/10.1103/PhysRevX.10.031013}{\textit{Phys. Rev. X} \textbf{10}, 031013 (2020)}
+
+    \item \underline{J.-Y. Li}, R.-Q. Wang*, M.-X. Deng*, M. Yang, In-plane magnetization effect on current-induced spin-orbit torque in a ferromagnet/topological insulator bilayer with hexagonal warping, \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.155139}{\textit{Phys. Rev. B} \textbf{99}, 155139 (2019)}
+
+    % \item R. Lu$^{\dagger}$, H. Sun$^{\dagger}$, S Kumar$^{\dagger}$, Y. Wang$^{\dagger}$, M. Gu, M. Zeng, Y. Hao, \underline{J. Li}, J. Shao, X. Ma, Z. Hao, K. Zhang, W. Mansuer, J. Mei, Y. Zhao, C. Liu, K. Deng, W. Huang, B. Shen, K. Shimada, E. F. Schwier*, C. Liu*, Q. Liu*, C. Chen*, Half-magnetic topological insulator with magnetization-induced Dirac gap at a selected surface, \href{https://doi.org/10.1103/PhysRevX.11.011039}{\textit{Phys. Rev. X} \textbf{11}, 011039 (2022)}
+\end{enumerate}
+
+\section{\textbf{Peer review activities}}
+\resumeItemListStart
+\item Peer reviewer of \textit{Phys. Rev. Lett.}, \textit{Phys. Rev. B} and \textit{npj Spintronics}. 
+\resumeItemListEnd
+
+
+% \section{\textbf{Patents and Publications} \hfill \textcolor{darkblue}{\scriptsize C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}
+% \vspace{0.2mm}
+% \small{
+% \begin{enumerate}[leftmargin=*, labelsep=0.5em, align=left, widest={[\textbf{S.1}]}, itemindent=0em, label={\textbf{[\arabic*]}]}]
+% \item[\textbf{[C.1]}] Your Name, et al. (Year). \href{https://doi.org/XX.XXXX/XXXXXXX.XXXX.XXXXXXX}{\textbf{Title of Conference Paper}}. In \textit{Name of Conference Proceedings}, pp. XX-XX. Publisher. Date, Location. DOI: XX.XXXX/XXXXXXX.XXXX.XXXXXXX
+
+% \item[\textbf{[S.1]}] Your Name, et al. (Year). \textbf{Title of Submitted Paper}. Manuscript submitted for publication in \textit{Journal Name}.
+
+% \item[\textbf{[P.1]}] Inventor 1, Your Name, Inventor 3, et al. (Year). \href{https://patentoffice.gov/patent/XXXXXXXXX}{\textbf{Title of Patent}}. Patent Office, Patent No. XXXXXXXXX. Registration Date: Date, Grant Date: Date, Publication Date: Date.
+
+% \item[\textbf{[J.1]}] Author 1, Your Name, Author 3, et al. (Year). \href{https://doi.org/XX.XXXX/XXXXX.XXXX.XXXXXXX}{\textbf{Title of Journal Article}}. \textit{Journal Name}, Vol. XX, Issue X, pp. XXX-XXX. DOI: XX.XXXX/XXXXX.XXXX.XXXXXXX
+% \end{enumerate}
+% }
+
+% \section{\textbf{Projects}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+
+% \resumeProject
+%   {Project A: [Brief Description]}
+%   {Tools: [List of tools and technologies used]}
+%   {Month Year - Month Year}
+%   {{}[\href{https://github.com/your-username/project-a}{\textcolor{darkblue}{\faGithub}}]}
+% \resumeItemListStart
+%   \item Developed [specific feature/system] for [specific purpose]
+%   \item Implemented [specific technology] for [specific goal], achieving [specific result]
+%   \item Created [specific component], ensuring [specific benefit]
+%   \item Applied [specific method] to analyze [specific aspect]
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Project B: [Brief Description]}
+%   {Tools: [List of tools and technologies used]}
+%   {Month Year}
+%   {{}[\href{https://github.com/your-username/project-b}{\textcolor{darkblue}{\faGithub}}]}
+% \resumeItemListStart
+%   \item Developed [specific model/system], achieving [specific metric]
+%   \item Implemented [specific feature], processing [specific volume] of data
+%   \item Created [specific visualization] for [specific purpose]
+%   \item Developed [specific component] for easy integration with [specific system]
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+
+
+
+% \section{\textbf{Skills}}
+% \vspace{-0.4mm}
+%  \resumeHeadingSkillStart
+%   \resumeSubItem{Programming Languages:}
+%     {Language 1, Language 2, Language 3, Language 4, Language 5}
+%   \resumeSubItem{Web Technologies:}
+%     {Technology 1, Technology 2, Technology 3, Technology 4, Technology 5}
+%   \resumeSubItem{Database Systems:}
+%     {Database 1, Database 2, Database 3}
+%   \resumeSubItem{Data Science \& Machine Learning:}
+%     {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5, Tool 6}
+% \resumeSubItem{Cloud Technologies:}
+%     {Cloud Platform 1, Cloud Platform 2, Cloud Platform 3}
+%   \resumeSubItem{DevOps \& Version Control:}
+%     {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5}
+%   \resumeSubItem{Specialized Area:}
+%     {Skill 1, Skill 2, Skill 3, Skill 4}
+%   \resumeSubItem{Mathematical \& Statistical Tools:}
+%     {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5}
+%   \resumeSubItem{Other Tools \& Technologies:}
+%     {Tool 1, Tool 2, Tool 3, Tool 4, Tool 5}
+%   \resumeSubItem{Research Skills:}{Skill 1, Skill 2, Skill 3, Skill 4, Skill 5, Skill 6}
+%  \resumeHeadingSkillEnd
+
+% \section{\textbf{Honors and Awards}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+
+% \resumeProject
+%   {Award Name A}
+%   {Awarding Institution/Organization}
+%   {Month Year}
+%   {{}[\href{https://award-link-a.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Brief description of the award and its significance
+%   \item Impact or recognition associated with the award
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Award Name B}
+%   {Awarding Institution/Organization}
+%   {Month Year}
+%   {{}[\href{https://award-link-b.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Brief description of the award and its significance
+%   \item Impact or recognition associated with the award
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Competition Achievement}
+%   {Competition Name, Organizing Body}
+%   {Month Year}
+%   {{}[\href{https://competition-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Specific achievement or rank in the competition
+%   \item Skills or abilities demonstrated through this achievement
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+
+% \vspace{-6mm}
+% \section{\textbf{Leadership Experience}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+% \resumeProject
+%   {Leadership Role A}
+%   {Organization/Institution Name}
+%   {Month Year - Month Year}
+%   {{}[\href{https://organization-a-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or achievement in this role
+%   \item Quantifiable impact or improvement made during tenure
+%   \item Initiative taken or project led
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Leadership Role B}
+%   {Organization/Institution Name}
+%   {Month Year - Month Year}
+%   {{}[\href{https://organization-b-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or achievement in this role
+%   \item Quantifiable impact or improvement made during tenure
+%   \item Initiative taken or project led
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+
+% \vspace{-6mm}
+
+% \section{\textbf{Volunteer Experience}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+% \resumeProject
+%   {Volunteer Role A}
+%   {Organization Name}
+%   {Month Year - Month Year}
+%   {{}[\href{https://volunteer-org-a-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or contribution in this role
+%   \item Impact of your volunteer work
+%   \item Skills developed or applied during this experience
+% \resumeItemListEnd
+
+% \resumeProject
+%   {Volunteer Role B}
+%   {Organization Name}
+%   {Month Year - Present}
+%   {{}[\href{https://volunteer-org-b-link.com}{\textcolor{darkblue}{\faIcon{globe}}}]}
+% \resumeItemListStart
+%   \item Key responsibility or contribution in this role
+%   \item Impact of your volunteer work
+%   \item Skills developed or applied during this experience
+% \resumeItemListEnd
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Professional Memberships}}
+% \vspace{-0.4mm}
+% \resumeSubHeadingListStart
+% \resumePOR{Professional Organization A}
+%     {, Membership ID: XXXXXXXX}
+%     {Month Year - Present}
+% \resumePOR{Professional Organization B}
+%     {, \href{https://membership-certificate-link.com}{Membership ID: XXXXXXXX}}
+%     {Month Year - Present}
+% \resumePOR{Professional Organization C}
+%     {, \href{https://membership-certificate-link.com}{Membership ID: XXXXXXXX}}
+%     {Month Year - Present}
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Certifications}}
+% \vspace{-0.2mm}
+% \resumeSubHeadingListStart
+% \resumePOR{}{\href{https://certification-link-a.com}{
+% \textbf{Certification A}
+% }}{Month Year}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-b.com}{Certification B}}}}{Month Year}
+% \resumePOR{}{
+% \textbf{Certifying Body:} {{\href{https://certification-link-c.com}{Certification C}}}}{Month Year}
+% \resumePOR{}{\href{https://certification-link-d.com}{
+% \textbf{Certification D}
+% }}{Month Year}
+
+% \resumeSubHeadingListEnd
+% \vspace{-6mm}
+
+% \section{\textbf{Additional Information}}
+% \vspace{-0.4mm}
+% \small{
+% \textbf{Languages:} Language A (Proficiency level), Language B (Proficiency level), Language C (Proficiency level)
+
+% \textbf{Interests:} Interest 1, Interest 2, Interest 3, Interest 4
+% }
+% \vspace{-4mm}
+
+
+% \section{\textbf{References}}
+% \vspace{-0.2mm}
+% \small{
+% \begin{enumerate}[leftmargin=*,labelsep=2mm]
+% \item \textbf{Reference Person 1}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email1@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Thesis Advisor, Manager, etc.]}
+
+% \item \textbf{Reference Person 2}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email2@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Project Supervisor, Colleague, etc.]}
+
+% \item \textbf{Reference Person 3}\\
+%    Job Title, Department\\
+%    Organization/Institution Name\\
+%    Email: email3@example.com\\
+%    Phone: +X-XXX-XXX-XXXX\\
+%    \textit{Relationship: [e.g., Mentor, Collaborator, etc.]}
+% \end{enumerate}
+% }
+
+
+\end{document}
